@@ -11,9 +11,9 @@ namespace VehicleInventory.Domain.Entities
     public class Vehicle
     {
         public Guid Id { get; private set; }
-        public string VehicleCode { get; private set; }
-        public string LocationId { get; private set; }
-        public string VehicleType { get; private set; }
+        public string VehicleCode { get; private set; } = string.Empty;
+        public string LocationId { get; private set; } = string.Empty;
+        public string VehicleType { get; private set; } = string.Empty;
         public VehicleStatus Status { get; private set; }
 
         // For EF Core
