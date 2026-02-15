@@ -2,6 +2,7 @@ using JGVehicleInventory.Application.Interfaces;
 using JGVehicleInventory.Infrastructure.Persistence;
 using JGVehicleInventory.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
+using JGVehicleInventory.Application.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +17,11 @@ builder.Services.AddDbContext<JGInventoryDbContext>(options =>
 
 //  Repository
 builder.Services.AddScoped<JGIVehicleRepository, JGVehicleRepository>();
-
+builder.Services.AddScoped<JGCreateVehicleService>();
+builder.Services.AddScoped<JGGetVehicleByIdService>();
+builder.Services.AddScoped<JGGetAllVehiclesService>();
+builder.Services.AddScoped<JGUpdateVehicleStatusService>();
+builder.Services.AddScoped<JGDeleteVehicleService>();
 var app = builder.Build();
 
 // Swagger
