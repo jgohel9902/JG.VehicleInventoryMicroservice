@@ -1,3 +1,7 @@
+using JGVehicleInventory.Infrastructure.Persistence;
+using JGVehicleInventory.Infrastructure.Repositories;
+using JGVehicleInventory.Application.Interfaces;
+using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
