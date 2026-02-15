@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JGVehicleInventory.Application.DTOs
 {
-    public sealed class JGVehicleRequestDto
+    public sealed class JGCreateVehicleRequestDto
     {
         public string VehicleCode { get; set; } = string.Empty;
         public string LocationId { get; set; } = string.Empty;
