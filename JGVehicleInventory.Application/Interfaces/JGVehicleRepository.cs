@@ -11,5 +11,6 @@ public interface JGIVehicleRepository
     Task UpdateAsync(Vehicle vehicle, CancellationToken cancellationToken = default);
     Task DeleteAsync(Vehicle vehicle, CancellationToken cancellationToken = default);
 
+    // uniqueness for VehicleCode at application workflow
     Task<bool> ExistsByVehicleCodeAsync(string vehicleCode, CancellationToken cancellationToken = default);
 }
