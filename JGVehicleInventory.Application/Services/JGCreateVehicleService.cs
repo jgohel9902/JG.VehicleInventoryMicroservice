@@ -13,6 +13,7 @@ public sealed class JGCreateVehicleService
         _repository = repository;
     }
 
+    // new vehicle creation if VehicleCode is unique
     public async Task<JGVehicleResponseDto> ExecuteAsync(
         JGCreateVehicleRequestDto request,
         CancellationToken cancellationToken = default)
@@ -29,6 +30,7 @@ public sealed class JGCreateVehicleService
 
         await _repository.AddAsync(vehicle, cancellationToken);
 
+        // map domain entity to response DTO
         return new JGVehicleResponseDto
         {
             Id = vehicle.Id,
