@@ -1,19 +1,25 @@
+using JGVehicleInventory.Application.Interfaces;
 using JGVehicleInventory.Infrastructure.Persistence;
 using JGVehicleInventory.Infrastructure.Repositories;
-using JGVehicleInventory.Application.Interfaces;
 using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
+// Add services
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//  DbContext
+builder.Services.AddDbContext<JGInventoryDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("JGInventoryDb")));
+
+//  Repository
+builder.Services.AddScoped<JGIVehicleRepository, JGVehicleRepository>();
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Swagger
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -21,9 +27,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();
