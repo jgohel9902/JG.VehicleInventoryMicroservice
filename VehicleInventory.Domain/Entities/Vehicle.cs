@@ -10,6 +10,7 @@ namespace VehicleInventory.Domain.Entities
 {
     public class Vehicle
     {
+        // aggregate identity
         public Guid Id { get; private set; }
         public string VehicleCode { get; private set; } = string.Empty;
         public string LocationId { get; private set; } = string.Empty;
@@ -37,6 +38,8 @@ namespace VehicleInventory.Domain.Entities
             VehicleCode = vehicleCode.Trim();
             LocationId = locationId.Trim();
             VehicleType = vehicleType.Trim();
+
+            // default lifecycle state
             Status = VehicleStatus.Available;
         }
 
